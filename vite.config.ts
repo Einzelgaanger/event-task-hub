@@ -1,36 +1,34 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     host: "::",
     port: 8080,
   },
   plugins: [
     react(), 
-    mode === "development" && componentTagger(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico'],
+      selfDestroying: true,
+      devOptions: {
+        enabled: false,
+      },
+      includeAssets: ['favicon.ico', 'favicon.svg', 'logo.svg'],
       manifest: {
         name: 'TaskFlow Calendar',
         short_name: 'TaskFlow',
         description: 'Modern calendar and task management application',
-        theme_color: '#8b5cf6',
-        background_color: '#fafafa',
+        theme_color: '#2563eb',
+        background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
         icons: [
-          {
-            src: 'placeholder.svg',
-            sizes: '512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
-          }
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          { src: 'favicon.ico', sizes: '48x48 72x72 96x96 144x144 192x192', type: 'image/x-icon' }
         ]
       },
       workbox: {
@@ -53,10 +51,10 @@ export default defineConfig(({ mode }) => ({
         ]
       }
     })
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-}));
+});

@@ -55,10 +55,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-primary/10">
-                <Calendar className="h-6 w-6 text-primary" />
-              </div>
-              <h1 className="text-xl font-bold">TaskFlow</h1>
+              <img src="/logo.svg" alt="TaskFlow" className="h-8 w-auto" />
             </div>
 
             {/* Desktop Navigation */}
