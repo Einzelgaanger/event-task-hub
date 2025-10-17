@@ -9,6 +9,11 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
+  preview: {
+    // Allow Render preview domain
+    allowedHosts: ["taskflow-9mmn.onrender.com"],
+    host: true,
+  },
   plugins: [
     react(), 
     VitePWA({
