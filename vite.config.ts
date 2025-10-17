@@ -9,7 +9,7 @@ export default defineConfig({
     host: "::",
     port: 8080,
   },
-  preview: {
+                              preview: {
     // Allow Render preview domain
     allowedHosts: ["taskflow-9mmn.onrender.com"],
     host: true,
